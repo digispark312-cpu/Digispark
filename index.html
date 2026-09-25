@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PASSWORD HUNTER - Hacker Simulator</title>
-
+ 
 <!-- =========================================================
      FIREBASE SETUP
      1. Go to https://console.firebase.google.com, create a project,
@@ -19,25 +19,25 @@
   import {
     getFirestore, collection, addDoc, serverTimestamp
   } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
-
-  // ⬇️ REPLACE THESE WITH YOUR OWN FIREBASE CONFIG VALUES ⬇️
+ 
   const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT_ID.appspot.com",
-    messagingSenderId: "YOUR_SENDER_ID",
-    appId: "YOUR_APP_ID"
+    apiKey: "AIzaSyDEcDdhIOxlkZ74mv9LzmsjyJqgPSt0sWM",
+    authDomain: "digispark-1299.firebaseapp.com",
+    projectId: "digispark-1299",
+    storageBucket: "digispark-1299.firebasestorage.app",
+    messagingSenderId: "349478880580",
+    appId: "1:349478880580:web:42825049253c03b9c0c311",
+    measurementId: "G-JLMHLQSSRB"
   };
-
+ 
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
-
+ 
   // Expose to the regular (non-module) script below, since <script type="module">
   // has its own scope and can't be called directly from ordinary inline scripts.
   window.__fb = { db, collection, addDoc, serverTimestamp };
 </script>
-
+ 
 <style>
     :root{
         --bg:#0d1117;
@@ -85,15 +85,15 @@
     h3{font-size:19px;margin-bottom:10px;color:var(--green);}
     h4{font-size:17px;margin:0 0 10px 0;}
     p{font-size:15.5px;line-height:1.55;}
-
+ 
     .stats{color:#8b949e;font-size:13px;font-weight:bold;margin-bottom:18px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
-
+ 
     .social-post{
         background-color:var(--bg);border-left:5px solid var(--blue);padding:16px 20px;margin:18px 0;
         color:var(--text);font-size:15.5px;border-radius:4px;line-height:1.5;
     }
     .social-post span{color:var(--blue);font-weight:bold;}
-
+ 
     .options-btn{
         display:block;width:100%;padding:15px 18px;margin:10px 0;
         background-color:#21262d;color:var(--green);border:2px solid var(--border);border-radius:6px;
@@ -102,7 +102,7 @@
     .options-btn:hover{background-color:var(--green);color:var(--bg);border-color:var(--green);}
     .options-btn:disabled{opacity:0.4;cursor:default;}
     .options-btn:disabled:hover{background-color:#21262d;color:var(--green);}
-
+ 
     .result-box{
         background-color:#21262d;border:2px solid var(--orange);padding:18px 20px;border-radius:6px;
         margin-top:18px;color:var(--orange);font-size:15.5px;display:none;
@@ -115,7 +115,7 @@
     .next-btn:hover,.lab-btn:hover,.survey-btn:hover,.back-btn:hover{background-color:#ffffff;box-shadow:0 0 15px #ffffff;}
     .back-btn{background-color:#21262d;color:var(--green);border:2px solid var(--green);}
     .back-btn:hover{background-color:var(--green);color:var(--bg);box-shadow:0 0 15px var(--green);}
-
+ 
     .stat-highlight{
         background-color:rgba(255,230,0,0.12);border-left:6px solid var(--yellow);color:var(--yellow);
         font-size:16px;font-weight:bold;padding:15px 18px;margin:15px 0;border-radius:6px;
@@ -129,14 +129,14 @@
     .rule-item.locked{opacity:0.35;filter:blur(0.3px);}
     .rule-item.done{border-left-color:var(--green);color:var(--green);}
     .rule-item.done strong{color:var(--green);}
-
+ 
     .survey-box{
         background-color:var(--bg);border:2px dashed var(--pink);padding:20px;border-radius:8px;
         margin-top:22px;box-shadow:0 0 15px rgba(255,0,127,0.15);
     }
     .survey-box h3{color:var(--pink);margin-top:0;}
     .survey-btn{background-color:var(--pink);color:#fff;width:calc(100% - 48px);}
-
+ 
     /* ---- MENU ---- */
     .menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px;}
     .menu-card{
@@ -148,7 +148,7 @@
     .menu-card .icon{font-size:26px;}
     .menu-card .title{font-size:15.5px;font-weight:bold;}
     .menu-card .desc{font-size:12.5px;color:#8b949e;font-weight:normal;line-height:1.4;}
-
+ 
     /* ---- PASSWORD CHECKER ---- */
     #pw-input{
         width:100%;background:var(--bg);border:2px solid var(--border);color:var(--green);
@@ -163,7 +163,7 @@
     .checklist li.ok{color:var(--green);}
     .checklist li.ok::before{content:"✔ ";}
     .checklist li:not(.ok)::before{content:"✘ ";color:var(--red);}
-
+ 
     /* ---- CREDENTIAL STUFFING GAME ---- */
     .leak-box{
         background:var(--bg);border:2px solid var(--red);border-radius:8px;padding:16px 18px;margin:16px 0;
@@ -179,7 +179,7 @@
     .choice-row{display:flex;gap:12px;margin-top:16px;flex-wrap:wrap;}
     .choice-row .options-btn{flex:1;min-width:200px;margin:0;}
     #stuff-score{font-size:16px;font-weight:bold;margin-top:14px;}
-
+ 
     /* ---- PASSWORD BUILDER GAME ---- */
     #builder-input{
         width:100%;background:var(--bg);border:2px solid var(--border);color:var(--green);
@@ -187,7 +187,7 @@
     }
     #builder-input:focus{outline:none;border-color:var(--green);}
     #builder-progress{font-size:13px;color:#8b949e;margin:10px 0 4px 0;font-weight:bold;}
-
+ 
     /* ---- NATIVE SURVEY FORM (submits to Firestore) ---- */
     .survey-form{margin-top:16px;}
     .survey-q{margin:18px 0;}
@@ -212,13 +212,13 @@
     .submit-survey-btn:disabled{opacity:0.5;cursor:default;}
     .survey-thanks{display:none;text-align:center;padding:20px 10px;}
     .survey-thanks.show{display:block;}
-
+ 
     /* ---- INFO CARDS ---- */
     .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px;}
     .info-card{background:var(--bg);border:2px solid var(--border);border-radius:8px;padding:16px 18px;}
     .info-card h4{color:var(--cyan);font-size:15.5px;margin-bottom:8px;}
     .info-card p{font-size:14px;margin:0;color:var(--text);}
-
+ 
     @media(max-width:560px){
         .panel{padding:22px 18px;}
         .info-grid, .menu-grid{grid-template-columns:1fr;}
@@ -229,14 +229,14 @@
 </head>
 <body>
 <div id="app">
-
+ 
     <!-- ====== GAME 1: PASSWORD HUNTER ====== -->
     <div class="panel" id="game-panel">
         <h1>[ SYSTEM: PASSWORD HUNTER v2.0 ]<span class="blink">_</span></h1>
         <div class="stats" id="progress">ДААЛГАВАР: 1 / 3</div>
         <div id="screen"></div>
     </div>
-
+ 
     <!-- ====== SYSTEM MENU (hub) ====== -->
     <div class="panel" id="menu-panel" style="display:none;">
         <h1>[ SYSTEM MENU ]<span class="blink">_</span></h1>
@@ -265,7 +265,7 @@
         </div>
         <button class="lab-btn" style="width:100%;" onclick="showPanel('closing-panel')">📊 Судалгаа бөглөх</button>
     </div>
-
+ 
     <!-- ====== PAGE: PASSWORD CHECKER ====== -->
     <div class="panel" id="checker-panel" style="display:none;">
         <h1>[ SYSTEM: НУУЦ ҮГ ШАЛГАГЧ ]<span class="blink">_</span></h1>
@@ -283,14 +283,14 @@
         </ul>
         <button class="back-btn" onclick="showPanel('menu-panel')">← Цэс рүү буцах</button>
     </div>
-
+ 
     <!-- ====== PAGE: CREDENTIAL STUFFING GAME ====== -->
     <div class="panel" id="stuffing-panel" style="display:none;">
         <h1>[ SYSTEM: ХОСЛОЛ ХАЛДЛАГА ]<span class="blink">_</span></h1>
         <div id="stuffing-game-area"></div>
         <button class="back-btn" onclick="showPanel('menu-panel')">← Цэс рүү буцах</button>
     </div>
-
+ 
     <!-- ====== PAGE: PASSWORD BUILDER GAME ====== -->
     <div class="panel" id="builder-panel" style="display:none;">
         <h1>[ SYSTEM: НУУЦ ҮГ ЗОХИОГЧ ]<span class="blink">_</span></h1>
@@ -301,7 +301,7 @@
         <div id="builder-win" style="display:none;"></div>
         <button class="back-btn" onclick="showPanel('menu-panel')">← Цэс рүү буцах</button>
     </div>
-
+ 
     <!-- ====== PAGE: DEFEND / TIPS ====== -->
     <div class="panel" id="defend-panel" style="display:none;">
         <h1>[ SYSTEM: ХЭРХЭН ХАМГААЛАХ ВЭ ]<span class="blink">_</span></h1>
@@ -328,7 +328,7 @@
         </div>
         <button class="back-btn" onclick="showPanel('menu-panel')">← Цэс рүү буцах</button>
     </div>
-
+ 
     <!-- ====== CLOSING PANEL (survey) ====== -->
     <div class="panel" id="closing-panel" style="display:none;">
         <h1>[ SYSTEM: SESSION COMPLETE ]<span class="blink">_</span></h1>
@@ -337,19 +337,19 @@
             <h3>📊 БАГИЙН СУДАЛГАА & ТӨСЛИЙН ТАНИЛЦУУЛГА</h3>
             <p style="color:var(--text);font-size:14.5px;"><strong>Манай судалгааны үр дүнд:</strong> Сургуулийн дунд ангийн сурагчдын 68% нь сошиал медиа дээрээ байдаг мэдээллээр нууц үгээ хийсэн байдаг нь тогтоогдсон.</p>
             <p style="color:var(--text);font-size:14.5px;">Та цахим аюулгүй байдлаа хэр сайн хамгаалдаг вэ? Уг тоглоомыг бүрэн дуусгахын тулд доорх богино судалгааг бөглөнө үү — энэ нь манай төслийн үр дүнг тооцоход тань туслах болно.</p>
-
+ 
             <!-- Firestore now handles the submit (see script below) — no more action/method/target/iframe needed -->
             <form class="survey-form" id="survey-form">
                 <div class="survey-q">
                     <label class="q-title">1. Нэр</label>
                     <input type="text" name="ner" placeholder="Нэрээ бичнэ үү" autocomplete="off">
                 </div>
-
+ 
                 <div class="survey-q">
                     <label class="q-title">2. Анги</label>
                     <input type="text" name="angi" placeholder="Ангиа бичнэ үү" autocomplete="off">
                 </div>
-
+ 
                 <div class="survey-q">
                     <label class="q-title">3. Энэ тоглоомыг тоглохоос өмнө нууц үгийн аюулгүй байдлын талаар хэр их мэддэг байсан бэ?</label>
                     <div class="option-row scale-row">
@@ -360,7 +360,7 @@
                         <label><input type="radio" name="mdleg_omno" value="5"><span>5</span></label>
                     </div>
                 </div>
-
+ 
                 <div class="survey-q">
                     <label class="q-title">4. Тоглоомыг тоглосны дараа мэдлэг тань нэмэгдсэн үү?</label>
                     <div class="option-row">
@@ -369,7 +369,7 @@
                         <label><input type="radio" name="mdleg_nemegdsen" value="Тодорхойгүй"><span>Тодорхойгүй</span></label>
                     </div>
                 </div>
-
+ 
                 <div class="survey-q">
                     <label class="q-title">5. Аль хэсэг танд хамгийн их таалагдсан бэ?</label>
                     <div class="option-row">
@@ -379,7 +379,7 @@
                         <label><input type="checkbox" name="taalagdsan_hesgvvd" value="Хэрхэн хамгаалах вэ"><span>Хэрхэн хамгаалах вэ</span></label>
                     </div>
                 </div>
-
+ 
                 <div class="survey-q">
                     <label class="q-title">6. Та энэ тоглоомоос хойш өөрийн нууц үгээ солих эсвэл сайжруулах бодолтой байна уу?</label>
                     <div class="option-row">
@@ -388,7 +388,7 @@
                         <label><input type="radio" name="pw_solih_bodol" value="Аль хэдийн сайн"><span>Аль хэдийн сайн</span></label>
                     </div>
                 </div>
-
+ 
                 <div class="survey-q">
                     <label class="q-title">7. Тоглоом хэр ойлгомжтой, хэрэглэхэд амар байсан бэ?</label>
                     <div class="option-row scale-row">
@@ -399,15 +399,15 @@
                         <label><input type="radio" name="oilgomjtoi_amar" value="5"><span>5</span></label>
                     </div>
                 </div>
-
+ 
                 <div class="survey-q">
                     <label class="q-title">8. Санал хүсэлт байвал бичнэ үү</label>
                     <textarea name="sanal_husel" placeholder="(заавал биш)"></textarea>
                 </div>
-
+ 
                 <button type="submit" class="submit-survey-btn" id="survey-submit-btn">📤 Судалгааг илгээх</button>
             </form>
-
+ 
             <div class="survey-thanks" id="survey-thanks">
                 <h3 style="color:var(--pink);">✅ Баярлалаа!</h3>
                 <p style="color:var(--text);">Таны судалгааны хариулт амжилттай илгээгдлээ.</p>
@@ -417,7 +417,7 @@
         <button class="next-btn" onclick="location.reload()" style="width:100%;margin-top:16px;">Дахин тоглох ↻</button>
     </div>
 </div>
-
+ 
 <script>
 /* =========================================================
    PANEL / PAGE NAVIGATION
@@ -427,7 +427,7 @@ function showPanel(id){
     document.getElementById(id).style.display = 'block';
     window.scrollTo({top:0, behavior:'smooth'});
 }
-
+ 
 /* =========================================================
    SURVEY — now writes straight into Firestore ("survey_responses"
    collection) instead of Formspree. window.__fb is set up by the
@@ -440,7 +440,7 @@ if(surveyForm){
         const btn = document.getElementById('survey-submit-btn');
         btn.disabled = true;
         btn.textContent = 'Илгээж байна...';
-
+ 
         // Collect all form fields into a plain object (checkboxes become arrays)
         const formData = new FormData(surveyForm);
         const data = {};
@@ -452,13 +452,13 @@ if(surveyForm){
                 data[key] = value;
             }
         });
-
+ 
         try{
             if(!window.__fb) throw new Error("Firebase is not initialized — check your firebaseConfig in <head>.");
             const { db, collection, addDoc, serverTimestamp } = window.__fb;
             data.submittedAt = serverTimestamp();
             await addDoc(collection(db, "survey_responses"), data);
-
+ 
             surveyForm.style.display = 'none';
             document.getElementById('survey-thanks').classList.add('show');
         }catch(err){
@@ -469,7 +469,7 @@ if(surveyForm){
         }
     });
 }
-
+ 
 /* =========================================================
    GAME 1: PASSWORD HUNTER (3 levels)
    ========================================================= */
@@ -503,7 +503,7 @@ const levels = [
     }
 ];
 let currentLevel = 0;
-
+ 
 function loadLevel(){
     if(currentLevel >= levels.length){ showFinalScreen(); return; }
     const level = levels[currentLevel];
@@ -513,13 +513,13 @@ function loadLevel(){
     html += `<div id="result" class="result-box"></div>`;
     document.getElementById('screen').innerHTML = html;
 }
-
+ 
 function checkAnswer(index){
     const level = levels[currentLevel];
     const selected = level.options[index];
     const resultDiv = document.getElementById('result');
     level.options.forEach((_, i)=> document.getElementById('opt-'+i).disabled = true);
-
+ 
     if(selected.correct){
         resultDiv.style.borderColor = 'var(--green)';
         resultDiv.style.color = 'var(--green)';
@@ -534,10 +534,10 @@ function checkAnswer(index){
     }
     resultDiv.style.display = 'block';
 }
-
+ 
 function retryLevel(){ loadLevel(); }
 function nextLevel(){ currentLevel++; loadLevel(); }
-
+ 
 function showFinalScreen(){
     document.getElementById('progress').innerText = `ДААЛГАВАР БИЕЛҮҮЛСЭН`;
     document.getElementById('screen').innerHTML = `
@@ -548,14 +548,14 @@ function showFinalScreen(){
         <button class="lab-btn" onclick="showPanel('menu-panel')" style="width:100%;">🖥️ SYSTEM MENU руу орох -></button>
     `;
 }
-
+ 
 /* =========================================================
    PAGE: PASSWORD STRENGTH / CRACK-TIME ESTIMATOR
    (all client-side, nothing is sent anywhere)
    ========================================================= */
 const COMMON_PASSWORDS = ["password","123456","12345678","123456789","1234567890","qwerty","qwertyuiop","111111","000000","letmein","admin","welcome","monkey","iloveyou","1234567","password1","abc123","dragon","football","baseball","sunshine","princess","trustno1","master","hello","freedom","whatever","batman","superman","asdfgh","zxcvbn","121212","mongolia","ulaanbaatar"];
 const DICTIONARY_WORDS = ["password","qwerty","admin","welcome","letmein","monkey","dragon","football","baseball","sunshine","princess","master","freedom","batman","superman","mongolia","ulaanbaatar","tuya","bat","anujin","chinggis","khaan","love","angel","summer","winter","hello","iloveyou"];
-
+ 
 function detectSequentialOrKeyboard(pw){
     const lower = pw.toLowerCase();
     const sequences = ["0123456789","abcdefghijklmnopqrstuvwxyz","qwertyuiop","asdfghjkl","zxcvbnm"];
@@ -617,11 +617,11 @@ function formatSeconds(sec){
     }
     return "1 секундээс бага";
 }
-
+ 
 const pwInput = document.getElementById('pw-input');
 const meterFill = document.getElementById('meter-fill');
 const crackTimeEl = document.getElementById('pw-crack-time');
-
+ 
 pwInput.addEventListener('input', ()=>{
     const pw = pwInput.value;
     if(!pw){
@@ -647,14 +647,14 @@ pwInput.addEventListener('input', ()=>{
     else if(!allRequirementsMet || res.seconds < 31536000*10){ dangerLevel = 'var(--orange)'; }
     else { dangerLevel = 'var(--green)'; }
     crackTimeEl.innerHTML = `⏱️ Таах хугацаа: <span style="color:${dangerLevel}">${timeStr}</span><span style="color:#8b949e;font-size:13px;font-weight:normal;">${note}</span>`;
-
+ 
     const pct = Math.max(3, Math.min(100, (res.effectiveBits / 100) * 100));
     meterFill.style.width = pct + "%";
     meterFill.style.backgroundColor = (res.isCommon || res.effectiveBits < 40) ? 'var(--red)' : res.effectiveBits < 70 ? 'var(--orange)' : 'var(--green)';
-
+ 
     updateChecklist(pw, res.isCommon || res.hasPattern);
 });
-
+ 
 function updateChecklist(pw, isWeakPattern){
     const set = (id, ok) => { document.getElementById(id).classList.toggle('ok', !!ok); };
     set('chk-len', pw.length >= 12);
@@ -664,7 +664,7 @@ function updateChecklist(pw, isWeakPattern){
     set('chk-sym', /[^a-zA-Z0-9\s]/.test(pw));
     set('chk-common', pw.length > 0 && !isWeakPattern);
 }
-
+ 
 /* =========================================================
    PAGE: CREDENTIAL STUFFING — player types the ONE password
    they imagine using everywhere, then watches it get reused
@@ -677,14 +677,14 @@ const stuffingAccounts = [
 ];
 let stuffRoundIndex = 0;
 let userStuffPassword = "";
-
+ 
 function startStuffingGame(){
     stuffRoundIndex = 0;
     userStuffPassword = "";
     showPanel('stuffing-panel');
     renderStuffingIntro();
 }
-
+ 
 function renderStuffingIntro(){
     document.getElementById('stuffing-game-area').innerHTML = `
         <p>Олон хүн цаг хэмнэх үүднээс бараг бүх бүртгэлдээ (и-мэйл, сошиал медиа, банк гэх мэт) <strong>яг ижил нэг нууц үг</strong> ашигладаг. Одоо үүнийг өөрөө туршиж үзье.</p>
@@ -694,7 +694,7 @@ function renderStuffingIntro(){
         <button class="lab-btn" style="width:100%;margin-top:14px;" onclick="startStuffAttack()">▶ ЭХЛЭХ</button>
     `;
 }
-
+ 
 function startStuffAttack(){
     const input = document.getElementById('stuff-pw-input');
     const pw = input.value.trim();
@@ -711,7 +711,7 @@ function startStuffAttack(){
     `;
     renderStuffAccountRows();
 }
-
+ 
 function renderStuffAccountRows(){
     let html = '';
     stuffingAccounts.forEach((acc, i) => {
@@ -723,7 +723,7 @@ function renderStuffAccountRows(){
     });
     document.getElementById('stuff-accounts-list').innerHTML = html;
 }
-
+ 
 function revealNextStuffAccount(){
     if(stuffRoundIndex >= stuffingAccounts.length) return;
     stuffRoundIndex++;
@@ -732,7 +732,7 @@ function revealNextStuffAccount(){
         document.getElementById('stuff-reveal-btn').outerHTML = `<button class="lab-btn" style="width:100%;" onclick="renderStuffFinal()">ҮР ДҮНГ ХАРАХ -></button>`;
     }
 }
-
+ 
 function renderStuffFinal(){
     const total = stuffingAccounts.length;
     document.getElementById('stuffing-game-area').innerHTML = `
@@ -744,7 +744,7 @@ function renderStuffFinal(){
         <button class="lab-btn" onclick="startStuffingGame()">↻ Дахин тоглох</button>
     `;
 }
-
+ 
 /* =========================================================
    PAGE: PASSWORD BUILDER GAME
    Inspired by "The Password Game" (Neal Agarwal) — rules unlock
@@ -759,7 +759,7 @@ const builderRules = [
     { desc:"Нууц үг дотор яг НЭГ 🔒 эмодзи агуулсан байх ёстой.", test: pw => (pw.match(/🔒/gu)||[]).length === 1 }
 ];
 let builderInitialized = false;
-
+ 
 function startBuilderGame(){
     showPanel('builder-panel');
     document.getElementById('builder-win').style.display = 'none';
@@ -771,7 +771,7 @@ function startBuilderGame(){
         builderInitialized = true;
     }
 }
-
+ 
 function renderBuilderRules(pw){
     let unlockedCount = 0;
     for(let i=0;i<builderRules.length;i++){
@@ -785,7 +785,7 @@ function renderBuilderRules(pw){
         html += `<div class="rule-item ${ok?'done':''}"><strong>Дүрэм ${i+1}:</strong> ${builderRules[i].desc} ${ok?'✔':''}</div>`;
     }
     document.getElementById('builder-rules').innerHTML = html;
-
+ 
     if(unlockedCount === builderRules.length && builderRules.every(r => r.test(pw))){
         document.getElementById('builder-win').style.display = 'block';
         document.getElementById('builder-win').innerHTML = `
@@ -800,7 +800,7 @@ function renderBuilderRules(pw){
         document.getElementById('builder-win').style.display = 'none';
     }
 }
-
+ 
 function showBankLoginDemo(){
     const pw = document.getElementById('builder-input').value;
     const area = document.getElementById('bank-login-demo');
@@ -819,8 +819,9 @@ function showBankLoginDemo(){
         }
     }, 1200);
 }
-
+ 
 loadLevel();
 </script>
 </body>
 </html>
+ 
